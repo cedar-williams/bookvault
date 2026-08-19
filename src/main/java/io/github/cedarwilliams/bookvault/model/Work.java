@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Represents a book or other work of writing
@@ -21,7 +21,7 @@ public class Work {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "title")
     private String title;
@@ -32,7 +32,18 @@ public class Work {
     @Column(name = "first_published_date")
     private String firstPublishedDate;
 
-    @OneToMany(mappedBy = "work")
-    private List<Edition> editions = new ArrayList<>();
+    @OneToMany(mappedBy = "work", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Edition> editions = new HashSet<>();
+
+
+    public void addEdition(Edition edition) {
+        editions.add(edition);
+        edition.setWork(this);
+    }
+
+    public void removeEdition(Edition edition) {
+        editions.remove(edition);
+        edition.setWork(null);
+    }
 
 }

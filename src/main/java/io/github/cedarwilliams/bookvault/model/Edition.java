@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Represents an edition of a {@link Work}.
@@ -21,7 +21,7 @@ public class Edition {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "title")
     private String title;
@@ -36,8 +36,8 @@ public class Edition {
     @JoinColumn(name = "work_id")
     private Work work;
 
-    @OneToMany(mappedBy = "edition")
-    private List<Isbn> isbns = new ArrayList<>();
+    @OneToMany(mappedBy = "edition", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Isbn> isbns = new HashSet<>();
 
     @ManyToMany
     @JoinTable(
@@ -45,7 +45,7 @@ public class Edition {
             joinColumns = @JoinColumn(name = "edition_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id")
     )
-    private List<Author> authors = new ArrayList<>();
+    private Set<Author> authors = new HashSet<>();
 
     @ManyToMany
     @JoinTable(
@@ -53,6 +53,6 @@ public class Edition {
             joinColumns = @JoinColumn(name = "edition_id"),
             inverseJoinColumns = @JoinColumn(name = "publisher_id")
     )
-    private List<Publisher> publishers = new ArrayList<>();
+    private Set<Publisher> publishers = new HashSet<>();
 
 }

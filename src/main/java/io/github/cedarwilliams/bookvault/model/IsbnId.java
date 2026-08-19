@@ -18,7 +18,7 @@ import java.io.Serializable;
 @EqualsAndHashCode
 public class IsbnId implements Serializable {
 
-    private int editionId;
+    private Long editionId;
     private String isbn;
 
 }

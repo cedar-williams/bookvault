@@ -22,4 +22,5 @@ public class Isbn {
     @MapsId("editionId")
     @JoinColumn(name = "edition_id")
     private Edition edition;
+
 }
