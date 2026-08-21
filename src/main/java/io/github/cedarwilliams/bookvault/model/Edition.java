@@ -32,6 +32,10 @@ public class Edition {
     @Column(name = "published_date")
     private String publishedDate;
 
+    @Column(name = "format")
+    @Enumerated(EnumType.STRING)
+    private BookFormat format;
+
     @ManyToOne
     @JoinColumn(name = "work_id")
     private Work work;
