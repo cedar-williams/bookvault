@@ -26,6 +26,6 @@ public class Publisher {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(mappedBy = "publisher")
+    @ManyToMany(mappedBy = "publishers")
     private Set<Edition> editions = new HashSet<>();
 }
