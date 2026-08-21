@@ -7,6 +7,20 @@
 <body>
 
 <h1>Hello World!</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>First Published</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="tempWork : ${works}">
+            <td th:text="${tempWork.subtitle == null ? tempWork.title : tempWork.title + ': ' + tempWork.subtitle}">There should be a book here 🤨</td>
+            <td th:text="${tempWork.firstPublishedDate}"></td>
+        </tr>
+    </tbody>
+</table>
 
 </body>
 </html>
