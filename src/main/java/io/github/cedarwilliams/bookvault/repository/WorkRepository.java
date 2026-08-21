@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface WorkRepository extends JpaRepository<Work, Long> {
 
-    public List<Work> findAll();
-    public List<Work> findByTitle(String title);
+    List<Work> findAll();
+    List<Work> findByTitle(String title);
 
 }
