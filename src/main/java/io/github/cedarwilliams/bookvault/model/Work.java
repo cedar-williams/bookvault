@@ -1,9 +1,6 @@
 package io.github.cedarwilliams.bookvault.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,9 +10,6 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "work")
-@Getter
-@Setter
-@NoArgsConstructor
 public class Work {
 
     @Id
@@ -36,6 +30,8 @@ public class Work {
     private Set<Edition> editions = new HashSet<>();
 
 
+    public Work() {}
+
     public void addEdition(Edition edition) {
         editions.add(edition);
         edition.setWork(this);
@@ -46,4 +42,43 @@ public class Work {
         edition.setWork(null);
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
+    }
+
+    public String getFirstPublishedDate() {
+        return firstPublishedDate;
+    }
+
+    public void setFirstPublishedDate(String firstPublishedDate) {
+        this.firstPublishedDate = firstPublishedDate;
+    }
+
+    public Set<Edition> getEditions() {
+        return editions;
+    }
+
+    public void setEditions(Set<Edition> editions) {
+        this.editions = editions;
+    }
 }
