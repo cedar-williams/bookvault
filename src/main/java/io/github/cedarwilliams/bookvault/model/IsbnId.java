@@ -11,6 +11,7 @@ import java.util.Objects;
 @Embeddable
 public class IsbnId implements Serializable {
 
+
     private Long editionId;
     private String isbn;
 
@@ -46,4 +47,5 @@ public class IsbnId implements Serializable {
     public int hashCode() {
         return Objects.hash(editionId, isbn);
     }
+
 }

@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 @Table(name = "isbn")
 public class Isbn {
 
+
     @EmbeddedId
     private IsbnId isbnId;
 
@@ -19,6 +20,7 @@ public class Isbn {
 
 
     public Isbn() {}
+
 
     public IsbnId getIsbnId() {
         return isbnId;
@@ -35,4 +37,5 @@ public class Isbn {
     public void setEdition(Edition edition) {
         this.edition = edition;
     }
+
 }

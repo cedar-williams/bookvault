@@ -12,6 +12,7 @@ import java.util.Set;
 @Table(name = "work")
 public class Work {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -32,15 +33,6 @@ public class Work {
 
     public Work() {}
 
-    public void addEdition(Edition edition) {
-        editions.add(edition);
-        edition.setWork(this);
-    }
-
-    public void removeEdition(Edition edition) {
-        editions.remove(edition);
-        edition.setWork(null);
-    }
 
     public Long getId() {
         return id;
@@ -81,4 +73,16 @@ public class Work {
     public void setEditions(Set<Edition> editions) {
         this.editions = editions;
     }
+
+
+    public void addEdition(Edition edition) {
+        editions.add(edition);
+        edition.setWork(this);
+    }
+
+    public void removeEdition(Edition edition) {
+        editions.remove(edition);
+        edition.setWork(null);
+    }
+
 }

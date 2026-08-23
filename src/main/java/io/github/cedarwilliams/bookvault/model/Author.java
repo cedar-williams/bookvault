@@ -62,4 +62,5 @@ public class Author {
         editions.remove(edition);
         edition.removeAuthor(this);
     }
+
 }
