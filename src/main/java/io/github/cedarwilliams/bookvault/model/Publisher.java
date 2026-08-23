@@ -51,4 +51,15 @@ public class Publisher {
         this.editions = editions;
     }
 
+
+    public void addEdition(Edition edition) {
+        editions.add(edition);
+        edition.addPublisher(this);
+    }
+
+    public void removeEdition(Edition edition) {
+        editions.remove(edition);
+        edition.removePublisher(this);
+    }
+
 }

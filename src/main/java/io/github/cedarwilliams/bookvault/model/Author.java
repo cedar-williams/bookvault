@@ -12,6 +12,7 @@ import java.util.Set;
 @Table(name = "author")
 public class Author {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -21,10 +22,11 @@ public class Author {
     private String name;
 
     @ManyToMany(mappedBy = "authors")
-    private Set<Edition> edition = new HashSet<>();
+    private Set<Edition> editions = new HashSet<>();
 
 
     public Author() {}
+
 
     public Long getId() {
         return id;
@@ -43,10 +45,21 @@ public class Author {
     }
 
     public Set<Edition> getEdition() {
-        return edition;
+        return editions;
     }
 
-    public void setEdition(Set<Edition> edition) {
-        this.edition = edition;
+    public void setEdition(Set<Edition> editions) {
+        this.editions = editions;
+    }
+
+
+    public void addEdition(Edition edition) {
+        editions.add(edition);
+        edition.addAuthor(this);
+    }
+
+    public void removeEdition(Edition edition) {
+        editions.remove(edition);
+        edition.removeAuthor(this);
     }
 }

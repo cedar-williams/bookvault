@@ -12,6 +12,7 @@ import java.util.Set;
 @Table(name = "edition")
 public class Edition {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -57,7 +58,9 @@ public class Edition {
     )
     private Set<Publisher> publishers = new HashSet<>();
 
+
     public Edition() {}
+
 
     public Long getId() {
         return id;
@@ -130,4 +133,36 @@ public class Edition {
     public void setPublishers(Set<Publisher> publishers) {
         this.publishers = publishers;
     }
+
+
+    public void addIsbn(Isbn isbn) {
+        isbns.add(isbn);
+        isbn.setEdition(this);
+    }
+
+    public void removeIsbn(Isbn isbn) {
+        isbns.remove(isbn);
+        isbn.setEdition(null);
+    }
+
+    public void addAuthor(Author author) {
+        authors.add(author);
+        author.addEdition(this);
+    }
+
+    public void removeAuthor(Author author) {
+        authors.remove(author);
+        author.removeEdition(this);
+    }
+
+    public void addPublisher(Publisher publisher) {
+        publishers.add(publisher);
+        publisher.addEdition(this);
+    }
+
+    public void removePublisher(Publisher publisher) {
+        publishers.remove(publisher);
+        publisher.removeEdition(this);
+    }
+
 }
