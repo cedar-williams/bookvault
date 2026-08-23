@@ -55,12 +55,12 @@ public class Author {
 
     public void addEdition(Edition edition) {
         editions.add(edition);
-        edition.addAuthor(this);
+        edition.getAuthors().add(this);
     }
 
     public void removeEdition(Edition edition) {
         editions.remove(edition);
-        edition.removeAuthor(this);
+        edition.getAuthors().remove(this);
     }
 
 }

@@ -54,12 +54,12 @@ public class Publisher {
 
     public void addEdition(Edition edition) {
         editions.add(edition);
-        edition.addPublisher(this);
+        edition.getPublishers().add(this);
     }
 
     public void removeEdition(Edition edition) {
         editions.remove(edition);
-        edition.removePublisher(this);
+        edition.getPublishers().remove(this);
     }
 
 }

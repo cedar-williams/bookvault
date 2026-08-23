@@ -147,22 +147,22 @@ public class Edition {
 
     public void addAuthor(Author author) {
         authors.add(author);
-        author.addEdition(this);
+        author.getEditions().add(this);
     }
 
     public void removeAuthor(Author author) {
         authors.remove(author);
-        author.removeEdition(this);
+        author.getEditions().remove(this);
     }
 
     public void addPublisher(Publisher publisher) {
         publishers.add(publisher);
-        publisher.addEdition(this);
+        publisher.getEditions().add(this);
     }
 
     public void removePublisher(Publisher publisher) {
         publishers.remove(publisher);
-        publisher.removeEdition(this);
+        publisher.getEditions().remove(this);
     }
 
 }
