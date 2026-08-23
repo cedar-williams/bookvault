@@ -44,11 +44,11 @@ public class Author {
         this.name = name;
     }
 
-    public Set<Edition> getEdition() {
+    public Set<Edition> getEditions() {
         return editions;
     }
 
-    public void setEdition(Set<Edition> editions) {
+    public void setEditions(Set<Edition> editions) {
         this.editions = editions;
     }
 
