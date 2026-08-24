@@ -1,9 +1,6 @@
 package io.github.cedarwilliams.bookvault.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,10 +10,8 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "author")
-@Getter
-@Setter
-@NoArgsConstructor
 public class Author {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,5 +22,45 @@ public class Author {
     private String name;
 
     @ManyToMany(mappedBy = "authors")
-    private Set<Edition> edition = new HashSet<>();
+    private Set<Edition> editions = new HashSet<>();
+
+
+    public Author() {}
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<Edition> getEditions() {
+        return editions;
+    }
+
+    public void setEditions(Set<Edition> editions) {
+        this.editions = editions;
+    }
+
+
+    public void addEdition(Edition edition) {
+        editions.add(edition);
+        edition.getAuthors().add(this);
+    }
+
+    public void removeEdition(Edition edition) {
+        editions.remove(edition);
+        edition.getAuthors().remove(this);
+    }
+
 }
