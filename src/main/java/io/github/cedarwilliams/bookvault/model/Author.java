@@ -12,7 +12,6 @@ import java.util.Set;
 @Table(name = "author")
 public class Author {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -53,11 +52,13 @@ public class Author {
     }
 
 
+    /** Associates an edition with this author */
     public void addEdition(Edition edition) {
         editions.add(edition);
         edition.getAuthors().add(this);
     }
 
+    /** Disassociates an edition from this author */
     public void removeEdition(Edition edition) {
         editions.remove(edition);
         edition.getAuthors().remove(this);

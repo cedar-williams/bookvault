@@ -13,7 +13,6 @@ import java.util.Set;
 @Table(name = "work")
 public class Work {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -76,24 +75,24 @@ public class Work {
     }
 
 
+    /** Associates an edition with this work */
     public void addEdition(Edition edition) {
         editions.add(edition);
         edition.setWork(this);
     }
 
+    /** Disassociates an edition from this work */
     public void removeEdition(Edition edition) {
         editions.remove(edition);
         edition.setWork(null);
     }
 
-    /**
-     * Returns the full display title, ex. The Magicians: A Novel or Neuromancer
-     */
+    /** Returns the full display title, ex. The Magicians: A Novel or Neuromancer */
     public String getDisplayTitle() {
-        if (this.subtitle != null && this.subtitle.length() > 0) {
-            return this.title + ": " + this.subtitle;
+        if (subtitle != null && subtitle.length() > 0) {
+            return title + ": " + subtitle;
         }
-        return this.title;
+        return title;
     }
 
 }

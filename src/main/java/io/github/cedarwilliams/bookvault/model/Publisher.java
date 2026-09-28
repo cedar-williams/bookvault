@@ -9,7 +9,7 @@ import java.util.Set;
  * Represents a publisher.
  */
 @Entity
-@Table(name = "edition")
+@Table(name = "publisher")
 public class Publisher {
 
     @Id
@@ -52,11 +52,13 @@ public class Publisher {
     }
 
 
+    /** Associates an edition with this publisher */
     public void addEdition(Edition edition) {
         editions.add(edition);
         edition.getPublishers().add(this);
     }
 
+    /** Disassociates an edition from this publisher */
     public void removeEdition(Edition edition) {
         editions.remove(edition);
         edition.getPublishers().remove(this);

@@ -9,7 +9,6 @@ import jakarta.persistence.*;
 @Table(name = "isbn")
 public class Isbn {
 
-
     @EmbeddedId
     private IsbnId isbnId;
 

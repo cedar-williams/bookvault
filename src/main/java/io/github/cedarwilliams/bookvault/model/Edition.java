@@ -13,7 +13,6 @@ import java.util.Set;
 @Table(name = "edition")
 public class Edition {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -136,31 +135,37 @@ public class Edition {
     }
 
 
+    /** Associates an ISBN with this edition */
     public void addIsbn(Isbn isbn) {
         isbns.add(isbn);
         isbn.setEdition(this);
     }
 
+    /** Disassociates an ISBN from this edition */
     public void removeIsbn(Isbn isbn) {
         isbns.remove(isbn);
         isbn.setEdition(null);
     }
 
+    /** Associates an author with this edition */
     public void addAuthor(Author author) {
         authors.add(author);
         author.getEditions().add(this);
     }
 
+    /** Disassociates an author from this edition */
     public void removeAuthor(Author author) {
         authors.remove(author);
         author.getEditions().remove(this);
     }
 
+    /** Associates a publisher with this edition */
     public void addPublisher(Publisher publisher) {
         publishers.add(publisher);
         publisher.getEditions().add(this);
     }
 
+    /** Disassociates a publisher from this edition */
     public void removePublisher(Publisher publisher) {
         publishers.remove(publisher);
         publisher.getEditions().remove(this);

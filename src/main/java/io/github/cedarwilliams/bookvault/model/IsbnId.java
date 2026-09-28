@@ -11,7 +11,6 @@ import java.util.Objects;
 @Embeddable
 public class IsbnId implements Serializable {
 
-
     private Long editionId;
     private String isbn;
 
