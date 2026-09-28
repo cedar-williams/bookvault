@@ -89,7 +89,7 @@ public class Work {
 
     /** Returns the full display title, ex. The Magicians: A Novel or Neuromancer */
     public String getDisplayTitle() {
-        if (subtitle != null && subtitle.length() > 0) {
+        if (subtitle != null && !subtitle.isBlank()) {
             return title + ": " + subtitle;
         }
         return title;

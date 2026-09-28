@@ -171,4 +171,26 @@ public class Edition {
         publisher.getEditions().remove(this);
     }
 
+    /**
+     * Returns the full display title, ex. The Magicians: A Novel or Neuromancer
+     * If not available on the specific edition it's retrieved from the associated Work
+     **/
+    public String getDisplayTitle() {
+        String tmpTitle = null;
+        if (title != null && !title.isBlank()) {
+            tmpTitle = title;
+        }
+        else {
+            tmpTitle = work.getTitle();
+        }
+        if (subtitle != null && !subtitle.isBlank()) {
+            return tmpTitle + ": " + subtitle;
+        }
+        else if (work.getSubtitle() != null && !work.getSubtitle().isBlank()) {
+            return tmpTitle + ": " + work.getSubtitle();
+        }
+
+        return tmpTitle;
+    }
+
 }

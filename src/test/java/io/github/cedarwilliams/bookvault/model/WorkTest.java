@@ -2,9 +2,7 @@ package io.github.cedarwilliams.bookvault.model;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for {@link Work}.
@@ -45,6 +43,44 @@ public class WorkTest {
 
         assertTrue(work.getEditions().isEmpty());
         assertNull(edition.getWork());
+    }
+
+    @Test
+    void getDisplayTitle_nullSubTitle_shouldReturnTitle() {
+        Work work = new Work();
+        work.setTitle("Title");
+
+        assertNotEquals("", work.getSubtitle());
+        assertEquals("Title", work.getDisplayTitle());
+    }
+
+    @Test
+    void getDisplayTitle_blankSubTitle_shouldReturnTitle() {
+        Work work = new Work();
+        work.setTitle("Title");
+        work.setSubtitle("");
+
+        assertNotEquals(null, work.getSubtitle());
+        assertEquals("Title", work.getDisplayTitle());
+    }
+
+    @Test
+    void getDisplayTitle_spacesSubTitle_shouldReturnTitle() {
+        Work work = new Work();
+        work.setTitle("Title");
+        work.setSubtitle("      ");
+
+        assertNotEquals(null, work.getSubtitle());
+        assertEquals("Title", work.getDisplayTitle());
+    }
+
+    @Test
+    void getDisplayTitle_withSubTitle_shouldReturnTitleAndSubtitle() {
+        Work work = new Work();
+        work.setTitle("Title");
+        work.setSubtitle("Subtitle");
+
+        assertEquals("Title: Subtitle", work.getDisplayTitle());
     }
 
 }

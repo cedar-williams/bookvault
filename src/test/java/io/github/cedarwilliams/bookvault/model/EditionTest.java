@@ -2,9 +2,7 @@ package io.github.cedarwilliams.bookvault.model;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 /**
@@ -121,6 +119,64 @@ public class EditionTest {
         assertTrue(edition.getPublishers().isEmpty());
         assertTrue(publisher.getEditions().isEmpty());
 
+    }
+
+    @Test
+    void getDisplayTitle_noTitleOrSubtitle_shouldReturnWorkTitleAndSubtitle() {
+        Work work = new Work();
+        work.setTitle("Work Title");
+        work.setSubtitle("Work Subtitle");
+        Edition edition = new Edition();
+        work.addEdition(edition);
+
+        assertEquals("Work Title: Work Subtitle", edition.getDisplayTitle());
+    }
+
+    @Test
+    void getDisplayTitle_noTitleOrSubtitle_workNoSubtitle_shouldReturnWorkTitleOnly() {
+        Work work = new Work();
+        work.setTitle("Work Title");
+        Edition edition = new Edition();
+        work.addEdition(edition);
+
+        assertEquals("Work Title", edition.getDisplayTitle());
+    }
+
+    @Test
+    void getDisplayTitle_titleNoSubtitle_shouldReturnEditionTitleAndWorkSubtitle() {
+        Work work = new Work();
+        work.setTitle("Work Title");
+        work.setSubtitle("Work Subtitle");
+        Edition edition = new Edition();
+        edition.setTitle("Edition Title");
+        work.addEdition(edition);
+
+        assertEquals("Edition Title: Work Subtitle", edition.getDisplayTitle());
+    }
+
+    @Test
+    void getDisplayTitle_SubtitleNoTitle_shouldReturnWorkTitleAndEditionSubtitle() {
+        Work work = new Work();
+        work.setTitle("Work Title");
+        work.setSubtitle("Work Subtitle");
+        Edition edition = new Edition();
+        edition.setSubtitle("Edition Subtitle");
+        work.addEdition(edition);
+
+        assertEquals("Work Title: Edition Subtitle", edition.getDisplayTitle());
+    }
+
+    @Test
+    void getDisplayTitle_EditionHasTitleAndSubtitle_shouldReturnEditionTitleAndSubtitle() {
+        Work work = new Work();
+        work.setTitle("Work Title");
+        work.setSubtitle("Work Subtitle");
+        Edition edition = new Edition();
+        edition.setTitle("Edition Title");
+        edition.setSubtitle("Edition Subtitle");
+        work.addEdition(edition);
+
+        assertEquals("Edition Title: Edition Subtitle", edition.getDisplayTitle());
     }
 
 }
