@@ -1,6 +1,10 @@
 
 
 
+# CI
+* On push and pull request: Run maven tests
+* Todo: On push to release branch: Build .jar release
+
 # Design Decisions
 * **Date Of Publishing**: 
   Some books have a published date of a year, some are more precise with a day and month.
