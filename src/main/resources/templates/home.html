@@ -16,7 +16,7 @@
     </thead>
     <tbody>
         <tr th:each="tempWork : ${works}">
-            <td th:text="${tempWork.subtitle == null ? tempWork.title : tempWork.title + ': ' + tempWork.subtitle}">There should be a book here 🤨</td>
+            <td th:text="${tempWork.displayTitle}">There should be a book here 🤨</td>
             <td th:text="${tempWork.firstPublishedDate}"></td>
         </tr>
     </tbody>

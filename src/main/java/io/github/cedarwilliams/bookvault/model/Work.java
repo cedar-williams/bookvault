@@ -85,4 +85,14 @@ public class Work {
         edition.setWork(null);
     }
 
+    /**
+     * Returns the full display title, ex. The Magicians: A Novel or Neuromancer
+     */
+    public String getDisplayTitle() {
+        if (this.subtitle != null && this.subtitle.length() > 0) {
+            return this.title + ": " + this.subtitle;
+        }
+        return this.title;
+    }
+
 }
