@@ -1,0 +1,22 @@
+name: BookVault Tests
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Setup Java
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: 'maven'
+
+      - name: Run Maven tests
+        run: ./mvnw --batch-mode --errors test
