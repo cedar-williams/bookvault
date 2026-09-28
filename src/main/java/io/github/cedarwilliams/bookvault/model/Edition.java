@@ -2,6 +2,7 @@ package io.github.cedarwilliams.bookvault.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,13 +26,13 @@ public class Edition {
     private String subtitle;
 
     @Column(name = "published_date")
-    private String publishedDate;
+    private LocalDate publishedDate;
 
     @Column(name = "format")
     @Enumerated(EnumType.STRING)
     private BookFormat format;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "work_id")
     private Work work;
 
@@ -86,11 +87,11 @@ public class Edition {
         this.subtitle = subtitle;
     }
 
-    public String getPublishedDate() {
+    public LocalDate getPublishedDate() {
         return publishedDate;
     }
 
-    public void setPublishedDate(String publishedDate) {
+    public void setPublishedDate(LocalDate publishedDate) {
         this.publishedDate = publishedDate;
     }
 

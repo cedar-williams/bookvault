@@ -2,6 +2,7 @@ package io.github.cedarwilliams.bookvault.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,7 +26,7 @@ public class Work {
     private String subtitle;
 
     @Column(name = "first_published_date")
-    private String firstPublishedDate;
+    private LocalDate firstPublishedDate;
 
     @OneToMany(mappedBy = "work", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Edition> editions = new HashSet<>();
@@ -58,11 +59,11 @@ public class Work {
         this.subtitle = subtitle;
     }
 
-    public String getFirstPublishedDate() {
+    public LocalDate getFirstPublishedDate() {
         return firstPublishedDate;
     }
 
-    public void setFirstPublishedDate(String firstPublishedDate) {
+    public void setFirstPublishedDate(LocalDate firstPublishedDate) {
         this.firstPublishedDate = firstPublishedDate;
     }
 
