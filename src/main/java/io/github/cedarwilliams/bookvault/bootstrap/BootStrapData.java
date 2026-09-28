@@ -9,7 +9,9 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
-
+/**
+ * Seed the database with sample data
+ */
 @Component
 public class BootStrapData implements CommandLineRunner {
 
@@ -19,15 +21,8 @@ public class BootStrapData implements CommandLineRunner {
         this.workRepository = workRepository;
     }
 
-
-    /**
-     * If there's no data populate create startup data for demonstration purposes
-     */
     @Override
     public void run(String... args) throws Exception {
-
-        System.out.println("CommandLineRunner ran!");
-        System.out.println(workRepository.count());
 
         if (workRepository.count() == 0) {
             Work work1 = new Work();
@@ -49,7 +44,9 @@ public class BootStrapData implements CommandLineRunner {
             work2edition1.setTitle("The Prince");
             work2edition1.setPublishedDate(LocalDate.of(1935, 1, 1));
             work2edition1.setFormat(BookFormat.PAPERBACK);
+            work2.addEdition(work2edition1);
             workRepository.save(work2);
         }
     }
+
 }
