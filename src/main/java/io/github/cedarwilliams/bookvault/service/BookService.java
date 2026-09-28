@@ -38,10 +38,6 @@ public class BookService {
 
     // Work methods
 
-    public Work createWork(Work work) {
-        return workRepository.save(work);
-    }
-
     public List<Work> findAllWorks() {
         return workRepository.findAll();
     }
@@ -60,10 +56,6 @@ public class BookService {
 
 
     // Edition methods
-
-    public Edition createEdition(Edition edition) {
-        return editionRepository.save(edition);
-    }
 
     public List<Edition> findAllEditions() {
         return editionRepository.findAll();
@@ -84,16 +76,16 @@ public class BookService {
 
     // ISBN methods
 
-    public Isbn createIsbn(Isbn isbn) {
-        return isbnRepository.save(isbn);
-    }
-
     public List<Isbn> findAllIsbns() {
         return isbnRepository.findAll();
     }
 
-    public Optional<Isbn> findIsbnById(Long id) {
+    public Optional<Isbn> findIsbnById(IsbnId id) {
         return isbnRepository.findById(id);
+    }
+
+    public Optional<Isbn> findIsbnByIsbn(String isbn) {
+        return isbnRepository.findByIsbnIdIsbn(isbn);
     }
 
     public Isbn saveIsbn(Isbn isbn) {
@@ -106,10 +98,6 @@ public class BookService {
 
     
     // Publisher methods
-
-    public Publisher createPublisher(Publisher publisher) {
-        return publisherRepository.save(publisher);
-    }
 
     public List<Publisher> findAllPublishers() {
         return publisherRepository.findAll();
@@ -129,10 +117,6 @@ public class BookService {
 
 
     // Author methods
-
-    public Author createAuthor(Author author) {
-        return authorRepository.save(author);
-    }
 
     public List<Author> findAllAuthors() {
         return authorRepository.findAll();
