@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
+/**
+ * The MVC controller for handling Books.
+ * Using "book" instead of "work" because that's the colloquial user facing term for a work.
+ */
 @Controller
 public class BookController {
 
@@ -23,7 +27,7 @@ public class BookController {
 
         System.out.println("/home request");
 
-        List<Work> works = bookService.findAll();
+        List<Work> works = bookService.findAllWorks();
         model.addAttribute("works", works);
         return "home";
     }
