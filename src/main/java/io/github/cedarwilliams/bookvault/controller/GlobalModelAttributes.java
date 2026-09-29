@@ -13,4 +13,14 @@ public class GlobalModelAttributes {
         return siteName;
     }
 
+    @ModelAttribute("faviconPath")
+    public String faviconPath(@Value("${app.favicon.path}") String faviconPath) {
+        return faviconPath;
+    }
+
+    @ModelAttribute("faviconType")
+    public String faviconType(@Value("${app.favicon.type}") String faviconType) {
+        return faviconType;
+    }
+
 }

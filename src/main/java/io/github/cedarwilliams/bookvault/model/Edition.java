@@ -42,7 +42,7 @@ public class Edition {
     )
     private Set<Isbn> isbns = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "edition_author",
             joinColumns = @JoinColumn(name = "edition_id"),
@@ -50,7 +50,7 @@ public class Edition {
     )
     private Set<Author> authors = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "edition_publisher",
             joinColumns = @JoinColumn(name = "edition_id"),

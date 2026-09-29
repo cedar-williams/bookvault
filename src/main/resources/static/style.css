@@ -1,0 +1,8 @@
+* {
+    font-family: system-ui;
+}
+
+.edition {
+    padding: 1rem;
+    border: 1px solid black;
+}

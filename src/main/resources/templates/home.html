@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${pageTitle} + ' - ' + ${siteName}"></title>
+    <title th:text="${pageTitle + ' - ' + siteName}"></title>
+    <link rel="icon" th:type="${faviconType}" th:href="@{${faviconPath}}">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
-<h1>Hello World!</h1>
+<h1>BookVault</h1>
 <table>
     <thead>
     <tr>
@@ -16,7 +18,11 @@
     </thead>
     <tbody>
         <tr th:each="tempWork : ${works}">
-            <td th:text="${tempWork.displayTitle}">There should be a book here 🤨</td>
+            <td >
+                <a th:href="@{/work/{id}(id=${tempWork.id})}" th:text="${tempWork.displayTitle}">
+                    There should be a book here 🤨
+                </a>
+            </td>
             <td th:text="${tempWork.firstPublishedDate}"></td>
         </tr>
     </tbody>
