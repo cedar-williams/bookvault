@@ -1,0 +1,7 @@
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${pageTitle + ' - ' + siteName}"></title>
+    <link rel="icon" th:type="${faviconType}" th:href="@{${faviconPath}}">
+    <link rel="stylesheet" href="/style.css">
+</head>

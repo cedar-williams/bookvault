@@ -1,6 +1,13 @@
 
 
 
+# Project Description
+
+## Template
+I've used Thymeleaf templates for the view content.
+I've taken advantage of Fragments to prevent duplicate html.
+I've also used Bootstrap CSS for it's prebuilt styles.
+
 # CI
 * On push and pull request: Run maven tests
 * Todo: On push to release branch: Build .jar release

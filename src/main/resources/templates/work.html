@@ -1,15 +1,12 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title th:text="${pageTitle + ' - ' + siteName}"></title>
-    <link rel="icon" th:type="${faviconType}" th:href="@{${faviconPath}}">
-    <link rel="stylesheet" href="/style.css">
-</head>
+<head th:replace="~{fragments/head :: head}"></head>
 <body>
 
 <div id="work">
+
+    <nav th:replace="~{fragments/navbar :: navbar}"></nav>
+
     <h1 th:text="${work.displayTitle}">Book Title</h1>
     <hr>
     <h2>Editions</h2>
@@ -34,9 +31,7 @@
 
 </div>
 
-<footer>
-    <a th:href="@{/home}">Return Home</a>
-</footer>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
 
 </body>
 </html>
