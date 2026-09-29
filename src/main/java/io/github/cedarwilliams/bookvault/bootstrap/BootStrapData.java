@@ -2,7 +2,6 @@ package io.github.cedarwilliams.bookvault.bootstrap;
 
 import io.github.cedarwilliams.bookvault.model.*;
 import io.github.cedarwilliams.bookvault.repository.WorkRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
