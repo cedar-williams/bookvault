@@ -2,6 +2,10 @@ package io.github.cedarwilliams.bookvault.model;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -177,6 +181,34 @@ public class EditionTest {
         work.addEdition(edition);
 
         assertEquals("Edition Title: Edition Subtitle", edition.getDisplayTitle());
+    }
+
+    /**
+     * Since the set order is non-deterministic,
+     * we construct a set out of order using a LinkedHashSet.
+     */
+    @Test
+    void getAllAuthorsOrderByName_shouldReturnInAlphabeticOrder() {
+        Edition edition = new Edition();
+        Author a1 = new Author();
+        Author a2 = new Author();
+        Author a3 = new Author();
+
+        a1.setName("Montgomery Montrose");
+        a2.setName("Alistair Ashcombe");
+        a3.setName("Reginald Ravenscroft");
+
+        Set<Author> authors = new LinkedHashSet<>();
+        authors.add(a1);
+        authors.add(a2);
+        authors.add(a3);
+
+        edition.setAuthors(authors);
+
+        List<Author> orderedAuthors = List.of(a2, a1, a3);
+
+        assertEquals(orderedAuthors, edition.getAllAuthorsOrderByName());
+
     }
 
 }
