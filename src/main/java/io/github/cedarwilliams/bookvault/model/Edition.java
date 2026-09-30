@@ -3,7 +3,9 @@ package io.github.cedarwilliams.bookvault.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -191,6 +193,10 @@ public class Edition {
         }
 
         return tmpTitle;
+    }
+
+    public List<Author> getAllAuthorsOrderByName() {
+        return authors.stream().sorted(Comparator.comparing(Author::getName)).toList();
     }
 
 }

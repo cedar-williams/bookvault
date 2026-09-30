@@ -1,17 +1,19 @@
 <!doctype html>
 <html lang="en">
+
 <head th:replace="~{fragments/head :: head}"></head>
+
 <body>
 
 <nav th:replace="~{fragments/navbar :: navbar}"></nav>
 
-<div id="content">
+<div class="container">
 
 
     <h1 th:text="${work.displayTitle}">Book Title</h1>
     <hr>
     <h2>Editions</h2>
-    <div class="edition" th:each="edition : ${work.editions}">
+    <div class="edition" th:each="edition : ${work.allEditionsSortedByPublishDateDesc}">
         <h3 th:text="${edition.displayTitle}">Edition Title</h3>
         <h4 th:text="${'Published: ' + edition.publishedDate}"></h4>
         <h4>Publisher:</h4>
@@ -22,17 +24,15 @@
 
         <div class="authors">
             <h4>Authors</h4>
-            <div th:each="author: ${edition.authors}">
+            <div th:each="author: ${edition.allAuthorsOrderByName}">
                 <p th:text="${author.name}">Author Name</p>
             </div>
         </div>
     </div>
 
 
-
-</div>
-
 <footer th:replace="~{fragments/footer :: footer}"></footer>
+</div>
 
 </body>
 </html>

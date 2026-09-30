@@ -5,6 +5,8 @@
 
 <nav th:replace="~{fragments/navbar :: navbar}"></nav>
 
+<div class="container">
+
 <h1>BookVault</h1>
 <table>
     <thead>
@@ -16,7 +18,7 @@
     <tbody>
         <tr th:each="tempWork : ${works}">
             <td >
-                <a th:href="@{/work/{id}(id=${tempWork.id})}" th:text="${tempWork.displayTitle}">
+                <a th:href="@{/works/{id}(id=${tempWork.id})}" th:text="${tempWork.displayTitle}">
                     There should be a book here 🤨
                 </a>
             </td>
@@ -24,6 +26,7 @@
         </tr>
     </tbody>
 </table>
+</div>
 
 </body>
 </html>

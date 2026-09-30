@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * The MVC controller for handling Books.
@@ -27,14 +26,14 @@ public class BookController {
 
     @GetMapping("/home")
     public String home(Model model) {
-        List<Work> works = bookService.findAllWorks();
+        List<Work> works = bookService.findAllByOrderByFirstPublishedDateDesc();
         model.addAttribute("works", works);
 
         model.addAttribute("pageTitle", "Home");
         return "home";
     }
 
-    @GetMapping("/work/{id}")
+    @GetMapping("/works/{id}")
     public String workById(@PathVariable Long id, Model model) {
         Work work = bookService.findWorkById(id).orElseThrow(
                 () -> new ResponseStatusException(
@@ -42,6 +41,7 @@ public class BookController {
                         "Work not found")
         );
         model.addAttribute("work", work);
+
 
         model.addAttribute("pageTitle", work.getTitle());
         return "work";

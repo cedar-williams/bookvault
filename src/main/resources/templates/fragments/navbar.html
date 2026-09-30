@@ -1,6 +1,23 @@
-<nav th:fragment="navbar" class="navbar fixed-top navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-        <img src="/images/BookVault.svg" class="logo d-inline-block align-top" alt="BookVault Logo" >
-        BookVault
-    </a>
+<nav th:fragment="navbar" class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="/images/BookVault.svg" class="logo d-inline-block align-top" alt="BookVault Logo" >
+            BookVault
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li>
+                    <a class="nav-link active" aria-current="page" href="#">Works</a>
+                </li>
+        <!--    <a class="" href="#">Authors</a>-->
+        <!--    <a class="" href="#">Publishers</a>-->
+            </ul>
+        </div>
+    </div>
 </nav>

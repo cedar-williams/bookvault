@@ -3,7 +3,9 @@ package io.github.cedarwilliams.bookvault.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -93,6 +95,11 @@ public class Work {
             return title + ": " + subtitle;
         }
         return title;
+    }
+
+    /** Returns the editions of the work in order from newest to oldest */
+    public List<Edition> getAllEditionsSortedByPublishDateDesc() {
+        return editions.stream().sorted(Comparator.comparing(Edition::getPublishedDate).reversed()).toList();
     }
 
 }

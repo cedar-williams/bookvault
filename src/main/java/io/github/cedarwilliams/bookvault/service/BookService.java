@@ -3,6 +3,8 @@ package io.github.cedarwilliams.bookvault.service;
 import io.github.cedarwilliams.bookvault.model.*;
 import io.github.cedarwilliams.bookvault.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,6 +42,14 @@ public class BookService {
 
     public List<Work> findAllWorks() {
         return workRepository.findAll();
+    }
+
+    public Page<Work> findAllWorks(Pageable pageable) {
+        return workRepository.findAll(pageable);
+    }
+
+    public List<Work> findAllByOrderByFirstPublishedDateDesc() {
+        return workRepository.findAllByOrderByFirstPublishedDateDesc();
     }
 
     public Optional<Work> findWorkById(Long id) {
