@@ -3,14 +3,12 @@ package io.github.cedarwilliams.bookvault.controller;
 import io.github.cedarwilliams.bookvault.model.Author;
 import io.github.cedarwilliams.bookvault.model.Edition;
 import io.github.cedarwilliams.bookvault.model.Work;
+import io.github.cedarwilliams.bookvault.repository.WorkRepository;
 import io.github.cedarwilliams.bookvault.service.BookService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -23,9 +21,11 @@ import java.util.List;
 public class BookController {
 
     private final BookService bookService;
+    private final WorkRepository workRepository;
 
-    public BookController(BookService bookService) {
+    public BookController(BookService bookService, WorkRepository workRepository) {
         this.bookService = bookService;
+        this.workRepository = workRepository;
     }
 
     /** Get the work from the service or throw HttpStatus NOT FOUND  */
@@ -113,6 +113,16 @@ public class BookController {
         existingEdition.setPublishedDate(edition.getPublishedDate());
 
         bookService.saveEdition(existingEdition);
+
+        return "redirect:/works/" + workId;
+    }
+
+    @GetMapping("/works/{workId}/editions/{editionId}/delete")
+    public String deleteEdition(@PathVariable Long workId, @PathVariable Long editionId) {
+
+        Edition existingEdition = getEditionFromBookService(editionId);
+        bookService.deleteEdition(existingEdition);
+
 
         return "redirect:/works/" + workId;
     }
