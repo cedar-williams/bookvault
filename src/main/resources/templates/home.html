@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title th:text="${pageTitle + ' - ' + siteName}"></title>
-    <link rel="icon" th:type="${faviconType}" th:href="@{${faviconPath}}">
-    <link rel="stylesheet" href="/style.css">
-</head>
+<head th:replace="~{fragments/head :: head}"></head>
 <body>
+
+<nav th:replace="~{fragments/navbar :: navbar}"></nav>
 
 <h1>BookVault</h1>
 <table>

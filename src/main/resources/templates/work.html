@@ -3,9 +3,10 @@
 <head th:replace="~{fragments/head :: head}"></head>
 <body>
 
-<div id="work">
+<nav th:replace="~{fragments/navbar :: navbar}"></nav>
 
-    <nav th:replace="~{fragments/navbar :: navbar}"></nav>
+<div id="content">
+
 
     <h1 th:text="${work.displayTitle}">Book Title</h1>
     <hr>
