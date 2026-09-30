@@ -37,6 +37,15 @@ public class BookController {
         );
     }
 
+    /** Get the edition from the service or throw HttpStatus NOT FOUND  */
+    public Edition getEditionFromBookService(Long editionId) {
+        return bookService.findEditionById(editionId).orElseThrow(
+                () -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Work not found")
+        );
+    }
+
     @GetMapping("/home")
     public String home(Model model) {
         List<Work> works = bookService.findAllByOrderByFirstPublishedDateDesc();
@@ -67,6 +76,7 @@ public class BookController {
         model.addAttribute("work", work);
         model.addAttribute("edition", new Edition());
 
+        model.addAttribute("pageTitle", "Add edition");
         return "add-edition-to-work";
     }
 
@@ -80,6 +90,31 @@ public class BookController {
 
         return "redirect:/works/" + workId;
 
+    }
+
+    @GetMapping("/works/{workId}/editions/{editionId}/update")
+    public String updateEdition(@PathVariable Long workId, @PathVariable Long editionId, Model model) {
+        Work work = getWorkFromBookService(workId);
+        Edition edition =  getEditionFromBookService(editionId);
+
+        model.addAttribute("work", work);
+        model.addAttribute("edition", edition);
+
+        model.addAttribute("pageTitle", "Edit edition");
+        return "edit-edition";
+    }
+
+    @PostMapping("/works/{workId}/editions/{editionId}/update")
+    public String saveUpdatedEdition(@PathVariable Long workId, @PathVariable Long editionId, @ModelAttribute Edition edition, Model model) {
+
+        Edition existingEdition = getEditionFromBookService(editionId);
+        existingEdition.setTitle(edition.getTitle());
+        existingEdition.setSubtitle(edition.getSubtitle());
+        existingEdition.setPublishedDate(edition.getPublishedDate());
+
+        bookService.saveEdition(existingEdition);
+
+        return "redirect:/works/" + workId;
     }
 
 }

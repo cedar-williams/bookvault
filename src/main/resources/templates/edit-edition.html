@@ -8,9 +8,11 @@
 <nav th:replace="~{fragments/navbar :: navbar}"></nav>
 
 <div class="container">
-    <h1 th:text="${'Add a new Edition to ' + work.displayTitle}"></h1>
+    <h1 th:text="${'Update Edition ' + edition.displayTitle}"></h1>
 
-    <form th:action="@{/works/{workId}/editions/add(workId=${work.id})}" th:object="${edition}" method="POST">
+    <form th:action="@{/works/{workId}/editions/{editionId}/update(workId=${work.id},editionId=${edition.id})}" th:object="${edition}" method="POST">
+
+        <input type="hidden" th:field="*{id}">
 
         <label for="title">Title:</label>
         <input type="text" th:field="*{title}" id="title">
@@ -21,7 +23,7 @@
         <label for="publishdate">Date published</label>
         <input type="date" th:field="*{publishedDate}" id="publishdate" required>
 
-        <input type="submit" value="Add Edition">
+        <input type="submit" value="Update edition">
 
     </form>
 
