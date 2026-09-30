@@ -132,6 +132,10 @@ public class BookService {
         return authorRepository.findAll();
     }
 
+    public List<Author> findAllOrderByNameDesc() {
+        return authorRepository.findAllByOrderByNameDesc();
+    }
+
     public Optional<Author> findAuthorById(Long id) {
         return authorRepository.findById(id);
     }
