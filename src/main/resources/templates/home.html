@@ -8,7 +8,7 @@
 <div class="container">
 
 <h1>BookVault</h1>
-<table>
+<table class="table table-hover">
     <thead>
     <tr>
         <th>Title</th>
@@ -17,7 +17,7 @@
     </thead>
     <tbody>
         <tr th:each="tempWork : ${works}">
-            <td >
+            <td>
                 <a th:href="@{/works/{id}(id=${tempWork.id})}" th:text="${tempWork.displayTitle}">
                     There should be a book here 🤨
                 </a>
