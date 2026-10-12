@@ -29,3 +29,5 @@ Run `./mvnw test`
 Run `./mvnw spring-boot:run`
 
 Home page: `http://localhost:8089/home`
+
+Build the docker image: `docker build -t bookvault .`
