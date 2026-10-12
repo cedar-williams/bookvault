@@ -11,8 +11,9 @@
         <div class="card-body p-4">
             <h2 class="card-text" th:text="${'Error Code: '+ statusCode}"></h2>
         </div>
-        <div class="card-footer p-4">
-            <a class="btn btn-primary" th:href="@{/home}">Go to Homepage</a>
+        <div class="card-footer p-4 d-flex justify-content-between">
+            <button class="btn btn-outline-secondary" onclick="history.back()">Go Back</button>
+            <a class="btn btn-primary" th:href="@{/home}">Return Home</a>
         </div>
     </div>
 </div>
