@@ -46,6 +46,11 @@ public class BookController {
         );
     }
 
+    @GetMapping("/")
+    public String redirectToHome() {
+        return "redirect:/home";
+    }
+
     @GetMapping("/home")
     public String home(Model model) {
         List<Work> works = bookService.findAllByOrderByFirstPublishedDateDesc();
