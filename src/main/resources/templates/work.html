@@ -3,7 +3,7 @@
 
 <head th:replace="~{fragments/head :: head}"></head>
 
-<body>
+<body class="bg-body-tertiary">
 
 <nav th:replace="~{fragments/navbar :: navbar}"></nav>
 
@@ -39,7 +39,8 @@
                 </div>
                 <div class="card-body">
                     <div th:each="author: ${edition.allAuthorsOrderByName}">
-                        <p class="card-text" th:text="${author.name}">Author Name</p>
+                        <a th:href="@{/author/{authorId}(authorId=${author.id})}" th:text="${author.name}"></a>
+<!--                        <p class="card-text" th:text="${author.name}">Author Name</p>-->
                     </div>
                 </div>
             </div>
