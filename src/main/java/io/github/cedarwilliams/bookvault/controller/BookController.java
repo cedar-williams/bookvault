@@ -46,6 +46,16 @@ public class BookController {
         );
     }
 
+    /** Get the author from the service or throw HttpsStatus NOT FOUND */
+    public Author getAuthorFromBookService(Long authorId) {
+        return bookService.findAuthorById(authorId).orElseThrow(
+                () -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Author not found"
+                )
+        );
+    }
+
     @GetMapping("/")
     public String redirectToHome() {
         return "redirect:/home";
@@ -130,6 +140,17 @@ public class BookController {
 
 
         return "redirect:/works/" + workId;
+    }
+
+    @GetMapping("/author/{authorId}")
+    public String authorById(@PathVariable Long authorId, Model model) {
+
+        Author author = getAuthorFromBookService(authorId);
+
+        model.addAttribute("author", author);
+        model.addAttribute("pageTitle", author.getName());
+
+        return "author";
     }
 
 }
