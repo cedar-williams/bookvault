@@ -18,9 +18,16 @@
         <!--            <h5>Edition</h5>-->
         <!--        </div>-->
         <div class="card-body">
-            <h5 class="card-title" th:text="${edition.displayTitle}">Edition Title</h5>
-
-            <h6 class="card-subtitle" th:text="${'Published: ' + edition.publishedDate}"></h6>
+            <div class="d-flex justify-content-between">
+                <div>
+                    <h5 class="card-title" th:text="${edition.displayTitle}">Edition Title</h5>
+                    <h6 class="card-subtitle" th:text="${'Published: ' + edition.publishedDate}"></h6>
+                </div>
+                <div>
+                    <p th:text="${edition.format}"></p>
+                    <p class="text-muted" th:each="isbn: ${edition.isbns}" th:text="${isbn.isbnId.isbn}"></p>
+                </div>
+            </div>
 
             <div class="card mb-3">
                 <div class="card-header">
@@ -46,15 +53,13 @@
             </div>
         </div>
         <div class="card-footer">
-            <a class="btn btn-info" th:href="@{/works/{workId}/editions/{editionId}/update(workId=${work.id},editionId=${edition.id})}">Edit</a>
+            <a class="btn btn-primary" th:href="@{/works/{workId}/editions/{editionId}/update(workId=${work.id},editionId=${edition.id})}">Edit</a>
             <a class="btn btn-danger" th:href="@{/works/{workId}/editions/{editionId}/delete(workId=${work.id},editionId=${edition.id})}" onclick="return confirm('Are you sure?')">Delete</a>
         </div>
     </div>
 
     <a class="btn btn-primary" th:href="@{/works/{workId}/editions/add(workId=${work.id})}">Add another edition</a>
 
-
-    <footer th:replace="~{fragments/footer :: footer}"></footer>
 </div>
 
 </body>
