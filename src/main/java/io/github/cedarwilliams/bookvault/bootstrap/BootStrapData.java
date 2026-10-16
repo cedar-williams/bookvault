@@ -23,6 +23,10 @@ public class BootStrapData implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         if (workRepository.count() == 0) {
+
+            Publisher vikingPenguin = new Publisher();
+            vikingPenguin.setName("Viking Penguin");
+
             // The Magicians
             Work work1 = new Work();
             work1.setTitle("The Magicians");
@@ -32,9 +36,15 @@ public class BootStrapData implements CommandLineRunner {
             work1edition1.setTitle("The Magicians");
             work1edition1.setSubtitle("A Novel");
             work1edition1.setPublishedDate(LocalDate.of(2009, 8, 11));
-            work1edition1.setFormat(BookFormat.PAPERBACK);
+            work1edition1.setFormat(BookFormat.HARDCOVER);
+            IsbnId isbnId1 = new IsbnId();
+            isbnId1.setIsbn("978-0-670-02055-3");
+            Isbn isbn1 = new Isbn();
+            isbn1.setIsbnId(isbnId1);
+            work1edition1.addIsbn(isbn1);
             Author author1 = new Author();
             author1.setName("Lev Grossman");
+            work1edition1.addPublisher(vikingPenguin);
             work1edition1.addAuthor(author1);
             work1.addEdition(work1edition1);
             workRepository.save(work1);
