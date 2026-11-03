@@ -63,11 +63,20 @@ public class BookController {
 
     @GetMapping("/home")
     public String home(Model model) {
-        List<Work> works = bookService.findAllByOrderByFirstPublishedDateDesc();
-        model.addAttribute("works", works);
 
         model.addAttribute("pageTitle", "Home");
         return "home";
+    }
+
+    @GetMapping("/works")
+    public String works(Model model) {
+
+        List<Work> works = bookService.findAllByOrderByFirstPublishedDateDesc();
+        model.addAttribute("works", works);
+
+        model.addAttribute("pageTitle", "Works");
+
+        return "works";
     }
 
     @GetMapping("/works/{workId}")
