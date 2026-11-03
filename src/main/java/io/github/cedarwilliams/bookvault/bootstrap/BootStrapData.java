@@ -42,11 +42,32 @@ public class BootStrapData implements CommandLineRunner {
             Isbn isbn1 = new Isbn();
             isbn1.setIsbnId(isbnId1);
             work1edition1.addIsbn(isbn1);
-            Author author1 = new Author();
-            author1.setName("Lev Grossman");
+            Author levGrossman = new Author();
+            levGrossman.setName("Lev Grossman");
             work1edition1.addPublisher(vikingPenguin);
-            work1edition1.addAuthor(author1);
+            work1edition1.addAuthor(levGrossman);
             work1.addEdition(work1edition1);
+
+            Edition work1edition2 = new Edition();
+            work1edition2.setTitle("The Magicians");
+            work1edition2.setSubtitle("A Novel");
+            work1edition2.setPublishedDate(LocalDate.of(2010, 5, 1));
+            work1edition2.setFormat(BookFormat.PAPERBACK);
+
+            IsbnId isbnId2 = new IsbnId();
+            isbnId2.setIsbn("978-0-452-29629-9");
+            Isbn isbn2 = new Isbn();
+            isbn2.setIsbnId(isbnId2);
+            work1edition2.addIsbn(isbn2);
+
+            Isbn isbn3 = new Isbn();
+            isbn3.setIsbnId(new IsbnId("0452296293"));
+            work1edition2.addIsbn(isbn3);
+
+            work1edition2.addAuthor(levGrossman);
+            work1edition2.addPublisher(vikingPenguin);
+            work1.addEdition(work1edition2);
+
             workRepository.save(work1);
 
             // The Prince
