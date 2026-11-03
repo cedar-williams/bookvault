@@ -17,6 +17,10 @@ public class IsbnId implements Serializable {
 
     public IsbnId() {}
 
+    public IsbnId(String isbn) {
+        this.setIsbn(isbn);
+    }
+
 
     public Long getEditionId() {
         return editionId;
