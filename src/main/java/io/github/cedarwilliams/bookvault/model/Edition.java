@@ -139,8 +139,8 @@ public class Edition {
 
     /** Associates an ISBN with this edition */
     public void addIsbn(Isbn isbn) {
-        isbns.add(isbn);
         isbn.setEdition(this);
+        isbns.add(isbn);
     }
 
     /** Disassociates an ISBN from this edition */

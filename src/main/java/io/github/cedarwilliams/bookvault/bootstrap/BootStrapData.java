@@ -37,10 +37,8 @@ public class BootStrapData implements CommandLineRunner {
             work1edition1.setSubtitle("A Novel");
             work1edition1.setPublishedDate(LocalDate.of(2009, 8, 11));
             work1edition1.setFormat(BookFormat.HARDCOVER);
-            IsbnId isbnId1 = new IsbnId();
-            isbnId1.setIsbn("978-0-670-02055-3");
             Isbn isbn1 = new Isbn();
-            isbn1.setIsbnId(isbnId1);
+            isbn1.setIsbn("978-0-670-02055-3");
             work1edition1.addIsbn(isbn1);
             Author levGrossman = new Author();
             levGrossman.setName("Lev Grossman");
@@ -54,14 +52,12 @@ public class BootStrapData implements CommandLineRunner {
             work1edition2.setPublishedDate(LocalDate.of(2010, 5, 1));
             work1edition2.setFormat(BookFormat.PAPERBACK);
 
-            IsbnId isbnId2 = new IsbnId();
-            isbnId2.setIsbn("978-0-452-29629-9");
             Isbn isbn2 = new Isbn();
-            isbn2.setIsbnId(isbnId2);
+            isbn2.setIsbn("978-0-452-29629-9");
             work1edition2.addIsbn(isbn2);
 
             Isbn isbn3 = new Isbn();
-            isbn3.setIsbnId(new IsbnId("0452296293"));
+            isbn3.setIsbn("0452296293");
             work1edition2.addIsbn(isbn3);
 
             work1edition2.addAuthor(levGrossman);
@@ -87,7 +83,6 @@ public class BootStrapData implements CommandLineRunner {
             Publisher w2e1p1 = new Publisher();
             w2e1p1.setName("Penguin Classics");
             work2edition1.addPublisher(w2e1p1);
-            IsbnId w2e1i1 = new IsbnId();
             work2edition1.addAuthor(author_Mach);
             work2.addEdition(work2edition1);
 

@@ -20,11 +20,12 @@ public class EditionTest {
     void addIsbn_shouldAddIsbnToSet() {
         Edition edition = new Edition();
         Isbn isbn = new Isbn();
+        isbn.setIsbn("978-0-5903-5340-3");
 
         edition.addIsbn(isbn);
 
-        assertTrue(edition.getIsbns().contains(isbn));
         assertEquals(edition, isbn.getEdition());
+        assertTrue(edition.getIsbns().contains(isbn));
     }
 
     @Test

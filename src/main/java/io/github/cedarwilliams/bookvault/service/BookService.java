@@ -90,14 +90,6 @@ public class BookService {
         return isbnRepository.findAll();
     }
 
-    public Optional<Isbn> findIsbnById(IsbnId id) {
-        return isbnRepository.findById(id);
-    }
-
-    public Optional<Isbn> findIsbnByIsbn(String isbn) {
-        return isbnRepository.findByIsbnIdIsbn(isbn);
-    }
-
     public Isbn saveIsbn(Isbn isbn) {
         return isbnRepository.save(isbn);
     }

@@ -25,7 +25,7 @@
                 </div>
                 <div>
                     <p th:text="${edition.format}"></p>
-                    <p class="text-muted" th:each="isbn: ${edition.isbns}" th:text="${isbn.isbnId.isbn}"></p>
+                    <p class="text-muted" th:each="isbn: ${edition.isbns}" th:text="${isbn.isbn}"></p>
                 </div>
             </div>
 
